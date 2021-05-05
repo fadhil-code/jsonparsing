@@ -15,7 +15,7 @@ def buildmodel(VOCABULARY):
     model.add(Dense(VOCABULARY, activation = 'softmax'))
     model.compile(loss = 'categorical_crossentropy', optimizer = 'adam')
     return model
-file = open('demofile.txt', encoding = 'utf8')
+file = open('demofile2.txt', encoding = 'utf8')
 raw_text = file.read()
 raw_text = raw_text.lower()
 chars = sorted(list(set(raw_text)))
@@ -56,8 +56,8 @@ print(input_strings.shape)
 print(output_strings.shape)
 
 model = buildmodel(VOCABULARY)
-filepath="saved_models/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
+filepath="saved_models2/weights-improvement-{epoch:02d}-{loss:.4f}.hdf5"
 checkpoint = ModelCheckpoint(filepath, monitor='loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 
-history = model.fit(input_strings, output_strings, epochs = 5, batch_size = 128, callbacks = callbacks_list)
+history = model.fit(input_strings, output_strings, epochs = 0, batch_size = 128, callbacks = callbacks_list)
